@@ -1,0 +1,85 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}                   % ... or a4paper or a5paper or ... 
+\usepackage{enumerate}
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Master Thesis proposal}
+\author{Chris Pool}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\nocite{*}
+\maketitle
+\section{Project idea}
+I want to participate in the Allen AI challenge that I found on Kaggle.com. The challenge is to create a model that can answer multiple choice questions for a 8th grade science test.  Questions can be simple look-up questions, but some others have to do with logical reasoning. My idea is to make a model that can detect the type of question (look-up, logical, sequence etc) and use the most accurate model to answer the question. I want to research what those categories are and which are the most suitable models to answer those questions.
+
+
+\section{Data}
+There are two datasets available, one dataset consists of 2500 questions, 4 answers and the correct answer. The second dataset, the validation dataset consist of 8,132 questions with 4 possible answers. To prevent inappropriate use only a small portion of those questions are real questions.The final test set, to be released at stage 2 of the competition, will contain 21,298 questions of the same type (including the 8,132 from the validation set). Again, only a small proportion will be used in the scoring. All the validation set questions will be used for the public leaderboard, and all the new test set questions used for private leaderboard.
+
+
+\section{Examples}
+Here are some the questions that illustrate the diversity in the questions. The first question is difficult because all answers are more or less correct. The system has to detect the best option: 
+\vspace{5mm}
+
+\noindent \textbf{Researchers work in teams to make cars more fuel efficient. Which of these statements describes the main advantage of working in teams rather than working individually?}
+\begin{enumerate}[a]
+\item The research is more likely to be published.
+\item The research costs less to perform.
+\item The researchers can share their ideas.
+\item The researchers have more time to complete work.
+\end{enumerate}
+\vspace{5mm}
+or questions that require logical reasoning:
+
+\vspace{5mm}
+\noindent \textbf{Margaret is running a full lap around a circular track. She is facing north when she starts. What direction will she be facing after she has completed half of a lap?}
+\begin{enumerate}[a]
+\item north
+\item south
+\item east
+\item west
+\end{enumerate}
+
+
+			
+\section{Possible approaches}
+In the paper of \cite{clark2013study} they describe a method of detecting the type of questions and corresponding "Project solving methods" that they call PSM in order to solve the question. They have 12 PSM for the different questions e.g., "what-is-a-x, find-a-value, how-many, similarity/differences, how/why, etc"  This is an interesting approach because most research focusses on one method(PSM) for solving the question. They use all possible PSM for a question and use the answer with the highest probability based on the combination of question type/PSM. Based on this paper and looking at the data an overview of possible question types:
+
+\subsection{Knowledge}
+Questions about taxonomic knowledge,  e.g. "Newton's work in physics helped to provide mathematical explanations for the earlier conclusions of which scientist?"
+
+\subsection{Definitions}
+Questions about definitions, e.g. "Which renewable resource is used with photovoltaic cells to produce electricity?" 
+
+\subsection{Properties}
+Questions about a property of a object, e.g. "What is the complementary base of adenine in DNA?"
+
+\subsection{Inference}
+Questions where inference is needed to answer the question, e.g. "Which example describes a learned behavior in a dog?	C	smelling the air for odors	barking when disturbed	sitting on command	digging in soil"
+\subsection{domain}
+Questions where you need to know different things not mentioned in the question to answer it, e.g. "Margaret is running a full lap around a circular track. She is facing north when she starts. What direction will she be facing after she has completed half of a lap?"
+
+\vspace{5mm}
+\cite{hixonlearning}, \cite{sukhbaatar2015end}, \cite{yu2014deep} are all researches about question answering but focus on questions where the possible answers are unknown.  The methods they describe could be possible PSM for my system. In all three researches they describe how they retrieve the correct answer from a corpus with different methods. 
+
+
+
+\section{Topic}
+\section{Research Questions}
+\section{Motivation}
+\section{Literature}
+\section{Method}
+\section{Expected results and outcomes}
+\bibliography{library} 
+\bibliographystyle{ieeetr}
+
+
+\end{document}  
